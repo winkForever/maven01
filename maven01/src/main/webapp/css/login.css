@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/**
+统一颜色
+ */
+.main_color {
+    color: #4abad8;
+}
+**
+统一颜色
+ */
+.main_color {
+    color: #4abad8;
+}
+
+.old_color {
+    color: #333333;
+}
+
+.white_color {
+    color: #ffffff;
+}
+
+.gray_color {
+    color: #999999;
+}
+
+.lt_gray_color {
+    color: #666666;
+}
+
+body {
+    width:100% ;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #333333;
+    font-family: PingFangSC-Regular, sans-serif;
+}
+.login_body {
+    width: 378px;
+    height: 400px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin-top: 99px;
+    float: right;
+    margin-right: 171.5px;
+    margin-bottom: 110px;
+}
+ .login_body {
+        margin-top: 134px;
+    }
+ .login_content {
+    padding-top: 50px;
+    margin: 0 30px;
+
+}
+.login_content .title {
+    font-size: 16px;
+    line-height: 21px;
+    height: 21px;
+    vertical-align: middle;
+}
+.login_content .title > img {
+    float: right;
+    height: 15px;
+    margin-top: 4px;
+    margin-left: 6px;
+}
+.div_float_right {
+    float: right;
+}
+.login_form .form_input {
+    border: 1px solid #e9e9e9;
+    width: 80%;
+    padding-left: 20%;
+    border-radius: 5px;/* 边框圆角 */
+}
+.login_form .login_sumbit {
+    width: 100%;
+    background-color: #4abad8;
+    text-align: center;
+    height: 38px;
+    line-height: 38px;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    border-radius: 5px;
+}
+.login_form .login_sumbit:hover { 
+    background-color: #4abae8;
+    cursor: pointer;   /* 鼠标悬浮时候变样式 */
+}
+.login_form label.error{
+    position: absolute;
+}
+.login_content .margin_top_login {
+    margin-top: 29px;
+}
+/**
+相对布局
+*/
+.relative_position {
+    position: relative;
+}
+/**
+按钮高度
+ */
+.btn_div {
+    height: 36px;
+    line-height: 36px;
+}
+.login_content .login_user {
+    position: absolute;
+    top: 8px;
+    left: 6%;
+}
+
+.login_user > img {
+    height: 22px;
+}
+.margin_top_middlel {
+    margin-top: 16px;
+}
+.margin_top_large {
+    margin-top: 30px;
+}
+.margin_form_middle {
+    margin-top: 20px;
+}
+
+.login_form .imgCode{
+	border: 1px solid #e9e9e9;
+    width: 70%;
+    padding-left: 20%;
+    border-radius: 5px;/* 边框圆角 */
+}
+/* 图片按钮样式 */
+.get_mess_btn {
+    width: 109px;
+    height: 38px;
+    line-height: 38px;
+    background-color: #56beda;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    color: #ffffff;
+    font-size: 12px;
+    cursor: pointer;
+}
+
