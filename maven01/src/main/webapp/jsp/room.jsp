@@ -166,9 +166,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </section>
 <body>
-   <c:forEach items="${area}" var="area">
+   <div>
+   <form action="room/searchRoom.action" mothod="post" id="myform">  
+     <select onchange="submitForm();" name="styleName">
+      <c:forEach items="${style}" var="style">
+      <option value ="${style.styleName}">${style.styleName}</option>
+      </c:forEach>
+     </select>
+     <input type="submit" value="查询"/>
+   </form>
+   <div style="margin-top: 10px">
+   <c:forEach items="${area}" var="area" >
      <a href="room/searchRoom.action?areaName=${area.areaName}">${area.areaName}</a>
    </c:forEach>
+   <div>
    <c:forEach items="${room}" var="room">  
    <!-- item start -->
    <div style="display: flex;border:1px solid red;height:200px;width:100%">
@@ -193,4 +204,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- item end -->
    </c:forEach>
 </body>	
+<script>
+//表单提交
+function submitForm(){
+    var form = document.getElementById("myform");
+    form.submit();
+}
+</script>
 </html>

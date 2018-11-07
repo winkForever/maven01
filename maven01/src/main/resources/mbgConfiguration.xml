@@ -51,10 +51,10 @@
     
     
         <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->    
-        <table tableName="area" domainObjectName="Area"    
+        <table tableName="room" domainObjectName="Room"    
                enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"    
                enableSelectByExample="false" selectByExampleQueryId="false" >    
-            <property name="areaActualColumnNames" value="false"/>    
+            <property name="roomActualColumnNames" value="false"/>    
         </table>    
     </context>    
 </generatorConfiguration>
