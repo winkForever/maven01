@@ -2,6 +2,8 @@ package com.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.entity.Room;
 
 public interface RoomDao {
@@ -18,4 +20,6 @@ public interface RoomDao {
     int updateByPrimaryKey(Room record);
     
     List<Room> findAll();
+    
+    List<Room> findByArea(@Param("areaName") String areaName);
 }
