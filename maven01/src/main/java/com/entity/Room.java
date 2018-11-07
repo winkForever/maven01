@@ -15,7 +15,15 @@ public class Room implements Serializable {
 
     private String roomRemark;
 
-    private Integer userId;
+    private Integer user;
+
+    private Integer area;
+
+    private Integer style;
+
+    private Boolean roomState;
+
+    private Boolean roomFlag;
 
     private static final long serialVersionUID = 1L;
 
@@ -67,11 +75,43 @@ public class Room implements Serializable {
         this.roomRemark = roomRemark == null ? null : roomRemark.trim();
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(Integer user) {
+        this.user = user;
+    }
+
+    public Integer getArea() {
+        return area;
+    }
+
+    public void setArea(Integer area) {
+        this.area = area;
+    }
+
+    public Integer getStyle() {
+        return style;
+    }
+
+    public void setStyle(Integer style) {
+        this.style = style;
+    }
+
+    public Boolean getRoomState() {
+        return roomState;
+    }
+
+    public void setRoomState(Boolean roomState) {
+        this.roomState = roomState;
+    }
+
+    public Boolean getRoomFlag() {
+        return roomFlag;
+    }
+
+    public void setRoomFlag(Boolean roomFlag) {
+        this.roomFlag = roomFlag;
     }
 }

@@ -22,4 +22,8 @@ public interface RoomDao {
     List<Room> findAll();
     
     List<Room> findByArea(@Param("areaName") String areaName);
+    
+    List<Room> findByStyle(@Param("styleName") String styleName);
+    
+    List<Room> findByAreaAndStyle(@Param("areaName") String areaName,@Param("styleName") String styleName);
 }

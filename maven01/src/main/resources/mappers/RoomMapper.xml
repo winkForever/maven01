@@ -8,13 +8,15 @@
     <result column="room_info" jdbcType="VARCHAR" property="roomInfo" />
     <result column="room_add" jdbcType="VARCHAR" property="roomAdd" />
     <result column="room_remark" jdbcType="VARCHAR" property="roomRemark" />
-    <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="area_id" jdbcType="INTEGER" property="userId" />
-    <result column="style_id" jdbcType="INTEGER" property="userId" />
-    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="user" jdbcType="INTEGER" property="user" />
+    <result column="area" jdbcType="INTEGER" property="area" />
+    <result column="style" jdbcType="INTEGER" property="style" />
+    <result column="room_state" jdbcType="BIT" property="roomState" />
+    <result column="room_flag" jdbcType="BIT" property="roomFlag" />
   </resultMap>
   <sql id="Base_Column_List">
-    room_id, room_img, room_price, room_info, room_add, room_remark, user_id,area_id,style_id,area_name
+    room_id, room_img, room_price, room_info, room_add, room_remark, user, area, style, 
+    room_state, room_flag
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -29,10 +31,12 @@
   <insert id="insert" parameterType="com.entity.Room">
     insert into room (room_id, room_img, room_price, 
       room_info, room_add, room_remark, 
-      user_id)
+      user, area, style, 
+      room_state, room_flag)
     values (#{roomId,jdbcType=INTEGER}, #{roomImg,jdbcType=VARCHAR}, #{roomPrice,jdbcType=VARCHAR}, 
       #{roomInfo,jdbcType=VARCHAR}, #{roomAdd,jdbcType=VARCHAR}, #{roomRemark,jdbcType=VARCHAR}, 
-      #{userId,jdbcType=INTEGER})
+      #{user,jdbcType=INTEGER}, #{area,jdbcType=INTEGER}, #{style,jdbcType=INTEGER}, 
+      #{roomState,jdbcType=BIT}, #{roomFlag,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.entity.Room">
     insert into room
@@ -55,8 +59,20 @@
       <if test="roomRemark != null">
         room_remark,
       </if>
-      <if test="userId != null">
-        user_id,
+      <if test="user != null">
+        user,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="style != null">
+        style,
+      </if>
+      <if test="roomState != null">
+        room_state,
+      </if>
+      <if test="roomFlag != null">
+        room_flag,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -78,8 +94,20 @@
       <if test="roomRemark != null">
         #{roomRemark,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+      <if test="user != null">
+        #{user,jdbcType=INTEGER},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=INTEGER},
+      </if>
+      <if test="style != null">
+        #{style,jdbcType=INTEGER},
+      </if>
+      <if test="roomState != null">
+        #{roomState,jdbcType=BIT},
+      </if>
+      <if test="roomFlag != null">
+        #{roomFlag,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -101,8 +129,20 @@
       <if test="roomRemark != null">
         room_remark = #{roomRemark,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
+      <if test="user != null">
+        user = #{user,jdbcType=INTEGER},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="style != null">
+        style = #{style,jdbcType=INTEGER},
+      </if>
+      <if test="roomState != null">
+        room_state = #{roomState,jdbcType=BIT},
+      </if>
+      <if test="roomFlag != null">
+        room_flag = #{roomFlag,jdbcType=BIT},
       </if>
     </set>
     where room_id = #{roomId,jdbcType=INTEGER}
@@ -114,14 +154,27 @@
       room_info = #{roomInfo,jdbcType=VARCHAR},
       room_add = #{roomAdd,jdbcType=VARCHAR},
       room_remark = #{roomRemark,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=INTEGER}
+      user = #{user,jdbcType=INTEGER},
+      area = #{area,jdbcType=INTEGER},
+      style = #{style,jdbcType=INTEGER},
+      room_state = #{roomState,jdbcType=BIT},
+      room_flag = #{roomFlag,jdbcType=BIT}
     where room_id = #{roomId,jdbcType=INTEGER}
   </update>
-   <select id="findAll"  parameterType="map"  resultMap="BaseResultMap">
+     <select id="findAll"  parameterType="map"  resultMap="BaseResultMap">
 		select * from room r 
 	</select>
 
     <select id="findByArea"  parameterType="map" resultType="com.entity.Room" resultMap="BaseResultMap">
-	  SELECT t1.* FROM room t1,area t2 WHERE t1.area_id = t2.area_id AND t2.area_name = #{areaName}
+	  SELECT t1.* FROM room t1,area t2 WHERE t1.area = t2.area_id AND t2.area_name = #{areaName}
+	</select>
+	
+	<select id="findByStyle"  parameterType="map" resultType="com.entity.Room" resultMap="BaseResultMap">
+	  SELECT t1.* FROM room t1,style t2 WHERE t1.style = t2.style_id AND t2.style_name = #{styleName}
+	</select>
+	
+	<select id="findByAreaAndStyle"  parameterType="map" resultType="com.entity.Room" resultMap="BaseResultMap">
+	  SELECT * FROM room t1,area t2,style t3 WHERE t1.area=t2.area_id AND t1.style=t3.style_id 
+	  and t2.area_name = #{areaName} and t3.style_name = #{styleName}
 	</select>
 </mapper>

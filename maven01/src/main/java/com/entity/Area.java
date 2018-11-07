@@ -7,7 +7,9 @@ public class Area implements Serializable {
 
     private String areaName;
 
-    private String remark;
+    private String areaRemark;
+
+    private Integer room;
 
     private static final long serialVersionUID = 1L;
 
@@ -27,12 +29,19 @@ public class Area implements Serializable {
         this.areaName = areaName == null ? null : areaName.trim();
     }
 
-    public String getRemark() {
-        return remark;
+    public String getAreaRemark() {
+        return areaRemark;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
+    public void setAreaRemark(String areaRemark) {
+        this.areaRemark = areaRemark == null ? null : areaRemark.trim();
     }
 
+    public Integer getRoom() {
+        return room;
+    }
+
+    public void setRoom(Integer room) {
+        this.room = room;
+    }
 }
