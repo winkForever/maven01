@@ -18,4 +18,8 @@ public class RoomServiceImpl implements RoomService{
 	  public List<Room> findAll(){
 		  return roomDao.findAll();
 	  }
+	   
+	  public List<Room> findByArea(String areaName){
+		  return roomDao.findByArea(areaName);
+	  }
 }
