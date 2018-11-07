@@ -1,0 +1,24 @@
+package com.controller;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.entity.Area;
+import com.entity.Room;
+import com.service.AreaService;
+import com.service.RoomService;
+
+@Controller  
+@RequestMapping("/room")  
+public class areaController {
+	private static Logger log=LoggerFactory.getLogger(RoomController.class);
+
+}
