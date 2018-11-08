@@ -43,42 +43,17 @@ public class RoomController {
 	
 	@RequestMapping("/searchRoom")
 	public String searchRoom(HttpServletRequest request,Model model){	
-	   String areaName = request.getParameter("areaName");
-	   String styleName = request.getParameter("styleName");
-	   if(areaName!=null&&styleName==null){
-		   List<Room> roomList = roomService.findByArea(areaName);
+	       String areaName = request.getParameter("areaName");
+	       String styleName = request.getParameter("styleName");
+	       String price =   request.getParameter("price");
+	       String space =  request.getParameter("space");	       
+		   List<Room> roomList = roomService.findByAreaAndStyleAndPriceAndSpace(areaName, styleName, price, space);
 		   List<Area> areaList = areaService.findAll(); 
 		   List<Style> styleList = styleService.findAll();
 		   model.addAttribute("room", roomList);
 		   model.addAttribute("area", areaList);
 		   model.addAttribute("style", styleList);
 		   return "room";  
-	   }
-	   if(areaName==null&&styleName!=null){
-		   List<Room> roomList = roomService.findByStyle(styleName);
-		   List<Area> areaList = areaService.findAll(); 
-		   List<Style> styleList = styleService.findAll();
-		   model.addAttribute("room", roomList);
-		   model.addAttribute("area", areaList);
-		   model.addAttribute("style", styleList);
-		   return "room"; 
-	   }
-	   
-	   if(areaName!=null&&styleName!=null){
-		   List<Room> roomList = roomService.findByAreaAndStyle(areaName, styleName);
-		   List<Area> areaList = areaService.findAll(); 
-		   List<Style> styleList = styleService.findAll();
-		   model.addAttribute("room", roomList);
-		   model.addAttribute("area", areaList);
-		   model.addAttribute("style", styleList);
-		   return "room"; 
-	   }
-	   else{
-		   List<Area> areaList = areaService.findAll(); 
-		   List<Style> styleList = styleService.findAll();
-		   model.addAttribute("area", areaList);
-		   model.addAttribute("style", styleList);
-		   return "room";
-	   }
+
 	}
 }

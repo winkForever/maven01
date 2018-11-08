@@ -12,4 +12,8 @@ public interface RoomService {
     public List<Room> findByStyle(String styleName); //查询所属户型的房屋
     
     public List<Room> findByAreaAndStyle(String areaName,String styleName);
+    
+    public List<Room> findByAreaAndStyleAndPriceAndSpace(String areaName,String styleName,String price,String space);
+    
+    
 }

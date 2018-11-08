@@ -30,4 +30,12 @@ public class RoomServiceImpl implements RoomService{
 	  public List<Room> findByAreaAndStyle(String areaName,String styleName){
 		  return roomDao.findByAreaAndStyle(areaName, styleName);
 	  }
+
+	  @Override
+	  public List<Room> findByAreaAndStyleAndPriceAndSpace(String areaName, String styleName, String price,
+			String space) {
+		  return roomDao.findByAreaAndStyleAndPriceAndSpace(areaName, styleName, price, space);
+      }
+	  
+	  
 }

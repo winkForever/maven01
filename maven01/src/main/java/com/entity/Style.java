@@ -9,7 +9,6 @@ public class Style implements Serializable {
 
     private String styleRemark;
 
-    private Integer room;
 
     private static final long serialVersionUID = 1L;
 
@@ -37,11 +36,4 @@ public class Style implements Serializable {
         this.styleRemark = styleRemark == null ? null : styleRemark.trim();
     }
 
-    public Integer getRoom() {
-        return room;
-    }
-
-    public void setRoom(Integer room) {
-        this.room = room;
-    }
 }

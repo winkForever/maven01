@@ -14,6 +14,9 @@ public class IndexController {
 	
 	@RequestMapping("/index")  
 	public String toIndex(HttpServletRequest request){
+		 if(request.getSession().getAttribute("loginFlag")!=null){
+			 return "index";
+		 }
 		 request.getSession().setAttribute("loginFlag", false);		 
 		 return "index";
 		// return "test";

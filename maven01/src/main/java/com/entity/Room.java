@@ -2,6 +2,8 @@ package com.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+
 public class Room implements Serializable {
     private Integer roomId;
 
@@ -19,7 +21,9 @@ public class Room implements Serializable {
 
     private Integer area;
 
-    private Integer style;
+    private Style style;
+    
+    private Style style2;
 
     private Boolean roomState;
 
@@ -91,11 +95,11 @@ public class Room implements Serializable {
         this.area = area;
     }
 
-    public Integer getStyle() {
+    public Style getStyle() {
         return style;
     }
 
-    public void setStyle(Integer style) {
+    public void setStyle(Style style) {
         this.style = style;
     }
 
@@ -114,4 +118,13 @@ public class Room implements Serializable {
     public void setRoomFlag(Boolean roomFlag) {
         this.roomFlag = roomFlag;
     }
+
+	public Style getStyle2() {
+		return style2;
+	}
+
+	public void setStyle2(Style style2) {
+		this.style2 = style2;
+	}   
+    
 }

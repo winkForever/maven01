@@ -177,4 +177,36 @@
 	  SELECT * FROM room t1,area t2,style t3 WHERE t1.area=t2.area_id AND t1.style=t3.style_id 
 	  and t2.area_name = #{areaName} and t3.style_name = #{styleName}
 	</select>
+	
+	<select id="findByAreaAndStyleAndPriceAndSpace"  parameterType="map" resultType="com.entity.Room" resultMap="BaseResultMap">
+	     select * from room t1,area t2,style t3 WHERE t1.area=t2.area_id AND t1.style=t3.style_id 
+		 <if test="areaName!=null and areaName!=''">
+		  and t2.area_name=#{areaName}
+		 </if>
+		  <if test="styleName!=null and styleName!=''">		
+		 and t3.style_name =#{styleName}
+		  </if>
+		  <if test="price!=null and price!='' and price=='1'.toString()">	
+		   and t1.room_price &lt;=500
+		  </if>	
+		   <if test="price!=null and price!='' and price=='2'.toString()">	
+		   and t1.room_price &gt;=500 and t1.room_price &lt;=1000
+		  </if>	
+		   <if test="price!=null and price!='' and price=='3'.toString()">	
+		   and t1.room_price &gt;=1000 and t1.room_price &lt;=1500
+		  </if>	
+		   <if test="price!=null and price!='' and price=='4'.toString()">	
+		   and t1.room_price &gt;=1500
+		  </if>
+		   <if test="space!=null and space!='' and space=='1'.toString()">	
+		   and  t1.room_remark &lt;=50
+		  </if>	
+		   <if test="space!=null and space!='' and space=='2'.toString()">	
+		   and  t1.room_remark &gt;=50 and t1.room_remark &lt;=100
+		  </if>	
+		  <if test="space!=null and space!='' and space=='3'.toString()">	
+		   and  t1.room_remark &gt;=100
+		  </if>		
+		
+	</select>
 </mapper>
