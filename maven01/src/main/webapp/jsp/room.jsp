@@ -157,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="right-area">
                            <div class="link-btn4 float_right">
                                <a href="#appointment-popup" class="btn-style-one has-appointment-popup">Appointment</a>
-                           </div>
+                           </div> 
                         </div>
                     </div>
                 </div>
@@ -166,20 +166,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </section>
 <body>
-   <div>
-   <form action="room/searchRoom.action" mothod="post" id="myform">  
-     <select onchange="submitForm();" name="styleName">
-      <c:forEach items="${style}" var="style">
-      <option value ="${style.styleName}">${style.styleName}</option>
-      </c:forEach>
+   <form action="room/searchRoom.action">  
+      <h2>户型:</h2>
+     <select name="styleName" style="margin-left: 100px;margin-top: -30px">
+      <option value="">选择户型</option>
+      <c:forEach items="${style}" var="style">-
+      <option value="${style.styleName}">${style.styleName}</option>
+      </c:forEach>   
      </select>
-     <input type="submit" value="查询"/>
+      <div style="margin-top: 10px"> </div>
+      <h2>区域:</h2>
+      <select name="areaName" style="margin-left: 100px;margin-top: -30px">
+       <option value="">选择区域</option>
+      <c:forEach items="${area}" var="area" >
+       <option value="${area.areaName}">${area.areaName}</option>
+      </c:forEach>
+      </select>
+       <div style="margin-top: 10px"> </div>
+       <h2>售价:</h2>
+      <select name="price" style="margin-left: 100px;margin-top: -30px">
+       <option value="">选择价格</option>
+       <option value="1">500元以下</option>
+       <option value="2">500元~1000元</option>
+       <option value="3">1000元~1500元</option>
+       <option value="4">1500元以上</option>
+      </select>
+       <div style="margin-top: 10px"> </div>
+       <h2>面积:</h2>
+       <select name="space" style="margin-left: 100px;margin-top: -30px">
+       <option value="">选择面积</option>
+       <option value="1">50m²以下</option>
+       <option value="2">50m²~100m²</option>
+       <option value="3">100m²以上</option>
+      </select>
+     <input type="submit" value="查询" style="margin-left: 240px;margin-top: -30px"/>
    </form>
-   <div style="margin-top: 10px">
-   <c:forEach items="${area}" var="area" >
-     <a href="room/searchRoom.action?areaName=${area.areaName}">${area.areaName}</a>
-   </c:forEach>
-   <div>
+
    <c:forEach items="${room}" var="room">  
    <!-- item start -->
    <div style="display: flex;border:1px solid red;height:200px;width:100%">
@@ -190,9 +212,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!-- 房源描述 -->
 	<div style="margin:20px 10px;border:1px solid green;height:160px;width:400px">
 		<div style="margin-top:20px;"><a style="TEXT-DECORATION: none;color: #000000;font-weight: bold;" href="#">${room.roomInfo}</a></div>
-		<div style="margin-top:15px;"><span style=""><span>一室一厅</span></div>
+		<div style="margin-top:15px;"><span style=""><span>${room.style2.styleName}</span></div>
 		<div style="margin-top:15px;"><span style=""><span>东寅商座 </span></div>
-	    <div style="margin-top:-30px; margin-left: 280px"><span style=""><span>1800元/月 </span></div>
+	    <div style="margin-top:-30px; margin-left: 280px"><span style=""><span>${room.roomPrice}元/月 </span></div>
 		<div style="margin-top:15px;display: flex;">
 			<div style="background-color:green;border-radius: 5px;margin:0px 5px"><span>整租</span></div>
 			<div style="background-color:red;border-radius: 5px;margin:0px 5px"><span>朝北</span></div>
@@ -204,11 +226,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- item end -->
    </c:forEach>
 </body>	
-<script>
-//表单提交
-function submitForm(){
-    var form = document.getElementById("myform");
-    form.submit();
-}
-</script>
 </html>
