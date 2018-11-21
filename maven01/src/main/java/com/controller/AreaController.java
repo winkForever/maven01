@@ -17,8 +17,8 @@ import com.service.AreaService;
 import com.service.RoomService;
 
 @Controller  
-@RequestMapping("/room")  
-public class areaController {
-	private static Logger log=LoggerFactory.getLogger(RoomController.class);
+@RequestMapping("/area")  
+public class AreaController {
+	private static Logger log=LoggerFactory.getLogger(AreaController.class);
 
 }

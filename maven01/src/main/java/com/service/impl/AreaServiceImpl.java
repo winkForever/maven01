@@ -20,4 +20,22 @@ public class AreaServiceImpl implements AreaService{
 	  public List<Area> findAll(){
 		  return areaDao.findAll();
 	  }
+
+	 @Override
+      public Area findByRoomId(Integer roomId) {
+		// TODO Auto-generated method stub
+		 return areaDao.findByRoomId(roomId);
+	 }
+
+	@Override
+	public Area findByAreaName(String areaName) {
+		// TODO Auto-generated method stub
+		return areaDao.findByAreaName(areaName);
+	}
+
+	@Override
+	public Area findByAreaId(Integer areaId) {
+		// TODO Auto-generated method stub
+		return areaDao.findByAreaId(areaId);
+	}
 }

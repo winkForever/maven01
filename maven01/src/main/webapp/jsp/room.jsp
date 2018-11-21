@@ -19,14 +19,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>租房展示</title>
 </head>
 <body>
-<!-- 头部 -->
-<header class="top-bar">
-     <base href="<%=basePath%>">  
+<div class="boxed_wrapper">
+    <header class="top-bar">
         <div class="container">
             <div class="clearfix">
                 <ul class="top-bar-text float_left">
-                    <li><i class="flaticon-telephone"></i>Phone +123-456-7890</li>
-                    <li><i class="flaticon-envelope"></i>Yourcompany@gmail.com</li>
+                   <a href="jsp/regist.jsp">注册</a>
+                   <c:if test="${loginFlag == false}">
+                   <a href="jsp/login.jsp">登录</a>
+                   </c:if>
+                    <c:if test="${loginFlag == true }">
+                    <a href="">欢迎您,${userName}</a>
+                    <a href="user/loginOut">退出登录</a>
+                    </c:if>
+                    <li><i class="flaticon-envelope"></i>租房平台</li>
                 </ul>
                 <ul class="social-style-one float_right">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -38,12 +44,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
         </div>
     </header>
-     <section class="mainmenu-area stricky">
+
+
+       <section class="mainmenu-area stricky">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     <div class="main-logo">
-                        <a href="index.html"><img src="images/logo/logo.png" alt=""></a>
+                        <a href="index.jsp"><img src="images/logo/logo.png" alt=""></a>
                     </div>
                 </div>
 
@@ -60,121 +68,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
 
-                                <li class="current dropdown"><a href="index.html">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Homepage One</a></li>
-                                        <li><a href="index-2.html">Homepage Two</a></li>
-                                    </ul>
+                                <li class="current dropdown"><a href="jsp/index.jsp">主页</a>
                                 </li>
 
-                                <li class="dropdown"><a href="#">About</a>
-                                    <ul>
-                                        <li><a href="about.html">About us</a></li>
-                                        <li><a href="team.html">Team</a></li>
-                                        <li><a href="rooms.html">Rooms</a></li>
-                                        <li><a href="single-room.html">Room Details</a></li>
-                                        <li><a href="testimonials.html">Testimonials</a></li>
-                                    </ul>
+
+                                <li class="dropdown"><a href="room/show.action">租房信息</a>
                                 </li>
 
-                                <li class="dropdown"><a href="#">services</a>
-                                    <ul>
-                                        <li><a href="service.html">Services</a></li>
-                                        <li><a href="service-single.html">Service Details</a></li>
-                                    </ul>  
-                                </li>
+                                <c:if test="${loginFlag == false}">
+                                <li><a href="jsp/login.jsp">个人中心</a></li>
+                                </c:if>
+                                <c:if test="${loginFlag == true}">
+                                <li><a href="user/showOwnMessage">个人中心</a></li>
+                                </c:if>
 
-                                <li class="dropdown"><a href="#">Pages</a>
-                                    <ul>
-                                        <li><a href="gallery-one.html">Gallery boxed</a></li>
-                                        <li><a href="gallery-two.html">Gallery Fullwidth</a></li>
-                                        <li><a href="error.html">404 Page</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown"><a href="#">News</a>
-                                    <ul>
-                                        <li><a href="blog-grid.html">News Grid</a></li>
-                                        <li><a href="blog-large.html">News Classic</a></li>
-                                        <li><a href="blog-details.html">News Details</a></li>
-                                    </ul>
-                                </li>
-
-                                <li><a href="contact.html">Contact</a></li>
-
-                            </ul>
-
-                            <ul class="mobile-menu clearfix">
-
-                                <li class="current dropdown"><a href="index.html">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Homepage One</a></li>
-                                        <li><a href="index-2.html">Homepage Two</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown"><a href="#">About</a>
-                                    <ul>
-                                        <li><a href="about.html">About us</a></li>
-                                        <li><a href="team.html">Team</a></li>
-                                        <li><a href="rooms.html">Rooms</a></li>
-                                        <li><a href="single-room.html">Room Details</a></li>
-                                        <li><a href="testimonials.html">Testimonials</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown"><a href="#">services</a>
-                                    <ul>
-                                        <li><a href="service.html">Services</a></li>
-                                        <li><a href="service-single.html">Service Details</a></li>
-                                    </ul>  
-                                </li>
-
-                                <li class="dropdown"><a href="#">Pages</a>
-                                    <ul>
-                                        <li><a href="gallery-one.html">Gallery boxed</a></li>
-                                        <li><a href="gallery-two.html">Gallery Fullwidth</a></li>
-                                        <li><a href="error.html">404 Page</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown"><a href="#">News</a>
-                                    <ul>
-                                        <li><a href="blog-grid.html">News Grid</a></li>
-                                        <li><a href="blog-large.html">News Classic</a></li>
-                                        <li><a href="blog-details.html">News Details</a></li>
-                                    </ul>
-                                </li>
-
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="right-column">
-                        <div class="right-area">
-                           <div class="link-btn4 float_right">
-                               <a href="#appointment-popup" class="btn-style-one has-appointment-popup">Appointment</a>
-                           </div> 
-                        </div>
-                    </div>
-                </div>
+                            </ul>      
 
             </div>
         </div>
     </section>
-<body>
+    
    <form action="room/searchRoom.action">  
-      <h2>户型:</h2>
+     <div style="margin-left: 160px; margin-top: 20px"> 
+     <h2>户型:</h2>
      <select name="styleName" style="margin-left: 100px;margin-top: -30px">
       <option value="">选择户型</option>
-      <c:forEach items="${style}" var="style">-
+      <c:forEach items="${style}" var="style">
       <option value="${style.styleName}">${style.styleName}</option>
       </c:forEach>   
      </select>
+     </div>
       <div style="margin-top: 10px"> </div>
+      <div style="margin-left: 160px">
       <h2>区域:</h2>
       <select name="areaName" style="margin-left: 100px;margin-top: -30px">
        <option value="">选择区域</option>
@@ -182,7 +107,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <option value="${area.areaName}">${area.areaName}</option>
       </c:forEach>
       </select>
+      </div>
        <div style="margin-top: 10px"> </div>
+       <div style="margin-left: 160px">
        <h2>售价:</h2>
       <select name="price" style="margin-left: 100px;margin-top: -30px">
        <option value="">选择价格</option>
@@ -191,7 +118,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <option value="3">1000元~1500元</option>
        <option value="4">1500元以上</option>
       </select>
+      </div>
        <div style="margin-top: 10px"> </div>
+       <div style="margin-left: 160px">
        <h2>面积:</h2>
        <select name="space" style="margin-left: 100px;margin-top: -30px">
        <option value="">选择面积</option>
@@ -199,27 +128,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <option value="2">50m²~100m²</option>
        <option value="3">100m²以上</option>
       </select>
-     <input type="submit" value="查询" style="margin-left: 240px;margin-top: -30px"/>
+      <input type="submit" value="查询" style="margin-left: 240px;margin-top: -30px"/>
+      </div>
    </form>
 
    <c:forEach items="${room}" var="room">  
    <!-- item start -->
-   <div style="display: flex;border:1px solid red;height:200px;width:100%">
+   <div style="display: flex;height:200px;width:100%" onclick="window.location.href= 'room/showRoomDetail.action?roomId=${room.roomId}'; return false">
 	<!-- 房源图片 -->
-	<div style="margin-top:20px;border:1px solid red;height:160px;width:200px">
-		<img style="height:160px;" src="images/${room.roomImg}"/>
+	<div style="margin-top:20px; height:160px;width:200px; margin-left: 160px">
+		<img style="height:160px;" src="${room.roomImg}"/>
 	</div>
 	<!-- 房源描述 -->
-	<div style="margin:20px 10px;border:1px solid green;height:160px;width:400px">
+	<div style="margin:20px 10px;height:160px;width:400px">
 		<div style="margin-top:20px;"><a style="TEXT-DECORATION: none;color: #000000;font-weight: bold;" href="#">${room.roomInfo}</a></div>
-		<div style="margin-top:15px;"><span style=""><span>${room.style2.styleName}</span></div>
-		<div style="margin-top:15px;"><span style=""><span>东寅商座 </span></div>
-	    <div style="margin-top:-30px; margin-left: 280px"><span style=""><span>${room.roomPrice}元/月 </span></div>
-		<div style="margin-top:15px;display: flex;">
+		<div style="margin-top:15px;"><span style="">${room.style2.styleName}</span></div>
+	    <div style="margin-top:-30px; margin-left: 280px"><span style="">${room.roomPrice}元/月 </span></div>
+<!-- 		<div style="margin-top:15px;display: flex;">
 			<div style="background-color:green;border-radius: 5px;margin:0px 5px"><span>整租</span></div>
 			<div style="background-color:red;border-radius: 5px;margin:0px 5px"><span>朝北</span></div>
 			<div style="background-color:green;border-radius: 5px;margin:0px 5px"><span>1号线</span></div>				
-		</div>		
+		</div>		 -->
 	
 	</div>
    </div>

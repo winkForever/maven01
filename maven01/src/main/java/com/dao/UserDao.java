@@ -1,7 +1,11 @@
 package com.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
+import com.entity.RentMessage;
+import com.entity.RoomStyle;
 import com.entity.User;
 
 public interface UserDao {
@@ -26,4 +30,14 @@ public interface UserDao {
    
    //根据用户名查询用户
     User findUserByName(@Param("userName")String name);
+	//根据用户名查找租房信息
+	List<RentMessage> findRentHisByUserName(String username);
+	//根据用户名查找历史发布房源信息
+	List<RentMessage> findrealaseHisByUserName(String username);
+	List<RoomStyle> testroomstyle();
+	
+	void updateByUserNameAndUserPhone(@Param("userName")String userName,@Param("userPhone")String userPhone,@Param("userId")Integer userId);
+
+	void updateByUserImg(@Param("userImg")String userImg, @Param("userId") Integer userId);
+	
 }

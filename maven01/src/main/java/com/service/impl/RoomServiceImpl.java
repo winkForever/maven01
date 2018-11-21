@@ -36,6 +36,35 @@ public class RoomServiceImpl implements RoomService{
 			String space) {
 		  return roomDao.findByAreaAndStyleAndPriceAndSpace(areaName, styleName, price, space);
       }
-	  
+
+	 @Override
+	 public Room findByRoomId(Integer roomId) {
+	      return roomDao.findByRoomId(roomId);
+	 }
+
+	@Override
+	public void insertRoom(String roomPrice, String areaName, String styleName, String roomAddress, String roomRemark,
+			String roomInfo, String roomImg,Integer userId,Integer areaId,Integer styleId,Boolean roomState) {
+		// TODO Auto-generated method stub
+		roomDao.insertRoom(roomPrice, areaName, styleName, roomAddress, roomRemark, roomInfo, roomImg,userId,areaId,styleId,roomState);
+	}
+
+	@Override
+	public void updateRoomState(Integer roomId, Boolean roomState) {
+		// TODO Auto-generated method stub
+		roomDao.updateRoomState(roomId, roomState);
+	}
+
+	@Override
+	public List<Room> findByUserId(Integer userId) {
+		// TODO Auto-generated method stub
+		return roomDao.findByUserId(userId);
+	}
+
+	@Override
+	public List<Room> findByUserIdAndRoomState(Integer userId, Boolean roomState) {
+		// TODO Auto-generated method stub
+		return roomDao.findByUserIdAndRoomState(userId, roomState);
+	}
 	  
 }

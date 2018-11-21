@@ -96,10 +96,15 @@ $().ready(function() {
 					        		 document.getElementById("password").value = "";
 					        		 document.getElementById("imgCode").value = "";
 					            }
-					            else if(data.loginCode==1){
+					            else if(data.loginCode==1&&data.userType==false){
 					        		layer.alert('登录成功', {icon: 1}); 
 					        	    window.setTimeout(window.location.href="jsp/index.jsp", 3000);
-					        	}else{
+					        	}
+					            else if(data.loginCode==1&&data.userType==true){
+					            	layer.alert('登录成功', {icon: 1}); 
+					        	    window.setTimeout(window.location.href="jsp/admin/adminIndex.jsp", 3000);
+					            }
+					            else{
 					        		 layer.alert('用户名或密码错误', {icon: 2}); 
 					        		 document.getElementById("userName").value = "";
 					        		 document.getElementById("password").value = "";

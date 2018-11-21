@@ -12,10 +12,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.entity.Area;
+import com.entity.Estimate;
 import com.entity.Room;
 import com.entity.Style;
 import com.service.AreaService;
+import com.service.EstimateService;
 import com.service.RoomService;
+import com.service.RoomRentService;
 import com.service.StyleService;
 import com.service.UserService;
 
@@ -28,7 +31,13 @@ public class RoomController {
     @Resource  
     private AreaService areaService;
     @Resource  
-    private StyleService styleService;   
+    private StyleService styleService; 
+    @Resource
+    private EstimateService estimateService;
+    @Resource
+    private RoomRentService roomRentService;
+    @Resource
+    private UserService userService;
     
 	@RequestMapping("/show")
 	public String show(HttpServletRequest request,Model model){
@@ -55,5 +64,48 @@ public class RoomController {
 		   model.addAttribute("style", styleList);
 		   return "room";  
 
+	}
+	
+	@RequestMapping("/showRoomDetail")
+	public String showRoomDetail(HttpServletRequest request,Model model){
+	   Integer roomId = Integer.parseInt(request.getParameter("roomId"));
+	   Room room =roomService.findByRoomId(roomId);
+	   Area area = areaService.findByRoomId(roomId); 
+	   Style style= styleService.findByRoomId(roomId);
+	   List<Estimate> estimateList = estimateService.findByRoomId(roomId);
+	   model.addAttribute("room", room);
+	   model.addAttribute("area", area);
+	   model.addAttribute("style", style);
+	   model.addAttribute("estimate", estimateList);
+	   return "roomdetail";
+	}
+	
+	@RequestMapping("/rentRoom")
+	public String rentRoom(HttpServletRequest request,Model model){
+		Integer roomId = Integer.parseInt(request.getParameter("roomId"));
+		Room room = roomService.findByRoomId(roomId);
+		String roomPrice = room.getRoomPrice();
+		Integer areaId = room.getArea();
+		Integer styleId = room.getStyle();
+		String areaName = areaService.findByAreaId(areaId).getAreaName();
+        String styleName = styleService.findByStyleId(styleId).getStyleName();
+		String roomAddress = room.getRoomAdd();
+		String roomRemark = room.getRoomRemark();
+		String roomInfo = room.getRoomInfo();
+		String roomImg = room.getRoomImg();
+	    String userName = (String)request.getSession().getAttribute("userName");
+	    Integer userId = userService.findUserByName(userName).getId();
+	    Boolean roomState = true;
+		roomRentService.insertRoomRent(roomPrice, areaName, styleName, roomAddress, roomRemark, roomInfo, roomImg, userId, areaId, styleId, roomState);
+		roomService.updateRoomState(roomId,roomState);
+		Room room1 = roomService.findByRoomId(roomId);
+		Area area = areaService.findByRoomId(roomId);
+		Style style = styleService.findByRoomId(roomId);
+		List<Estimate> estimateList = estimateService.findByRoomId(roomId);
+		model.addAttribute("room", room1);
+		model.addAttribute("area", area);
+		model.addAttribute("style", style);
+		model.addAttribute("estimate", estimateList);
+		return "roomdetail";
 	}
 }

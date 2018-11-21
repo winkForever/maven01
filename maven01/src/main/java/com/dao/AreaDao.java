@@ -3,6 +3,8 @@ package com.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.entity.Area;
 
 public interface AreaDao {
@@ -19,4 +21,10 @@ public interface AreaDao {
     int updateByPrimaryKey(Area record);
     
     List<Area> findAll();
+    
+    Area findByRoomId(@Param("roomId") Integer roomId);
+    
+    Area findByAreaName(@Param("areaName") String areaName);
+    
+    Area findByAreaId(@Param("areaId") Integer areaId);
 }

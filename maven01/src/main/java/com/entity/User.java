@@ -10,6 +10,9 @@ public class User implements Serializable {
 
     private String password;
     private Integer age;
+    private String userImg;
+    private String userPhone;
+    private Boolean userType;
 
     private static final long serialVersionUID = 1L;
 
@@ -44,4 +47,29 @@ public class User implements Serializable {
     public void setAge(Integer age) {
         this.age = age;
     }
+
+	public String getUserImg() {
+		return userImg;
+	}
+
+	public void setUserImg(String userImg) {
+		this.userImg = userImg;
+	}
+
+	public String getUserPhone() {
+		return userPhone;
+	}
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
+
+	public Boolean getUserType() {
+		return userType;
+	}
+
+	public void setUserType(Boolean userType) {
+		this.userType = userType;
+	}
+       
 }

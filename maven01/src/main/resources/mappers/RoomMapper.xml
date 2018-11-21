@@ -13,6 +13,11 @@
     <result column="style" jdbcType="INTEGER" property="style" />
     <result column="room_state" jdbcType="BIT" property="roomState" />
     <result column="room_flag" jdbcType="BIT" property="roomFlag" />
+    <association property="style2" javaType="com.entity.Style">
+    <id column="style_id" jdbcType="INTEGER" property="styleId" />
+    <result column="style_name" jdbcType="VARCHAR" property="styleName" />
+    <result column="style_remark" jdbcType="VARCHAR" property="styleRemark" />
+    </association>
   </resultMap>
   <sql id="Base_Column_List">
     room_id, room_img, room_price, room_info, room_add, room_remark, user, area, style, 
@@ -35,8 +40,18 @@
       room_state, room_flag)
     values (#{roomId,jdbcType=INTEGER}, #{roomImg,jdbcType=VARCHAR}, #{roomPrice,jdbcType=VARCHAR}, 
       #{roomInfo,jdbcType=VARCHAR}, #{roomAdd,jdbcType=VARCHAR}, #{roomRemark,jdbcType=VARCHAR}, 
-      #{user,jdbcType=INTEGER}, #{area,jdbcType=INTEGER}, #{style,jdbcType=INTEGER}, 
+      #{user,jdbcType=INTEGER}, #{area,jdbcType=INTEGER}, #{style,jdbcType = INTEGER}, 
       #{roomState,jdbcType=BIT}, #{roomFlag,jdbcType=BIT})
+  </insert>
+  <insert id="insertRoom" parameterType="com.entity.Room">
+    insert into room ( room_img, room_price, 
+      room_info, room_add, room_remark, 
+      user, area, style, 
+      room_state)
+    values ( #{roomImg,jdbcType=VARCHAR}, #{roomPrice,jdbcType=VARCHAR}, 
+      #{roomInfo,jdbcType=VARCHAR}, #{roomAddress,jdbcType=VARCHAR}, #{roomRemark,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{areaId,jdbcType=INTEGER}, #{styleId,jdbcType = INTEGER}, 
+      #{roomState,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.entity.Room">
     insert into room
@@ -162,23 +177,35 @@
     where room_id = #{roomId,jdbcType=INTEGER}
   </update>
      <select id="findAll"  parameterType="map"  resultMap="BaseResultMap">
-		select * from room r 
+		select * from  room r,style s where  r.style = s.style_id; 
 	</select>
+	
+	 <select id="findByRoomId"  parameterType="map"  resultMap="BaseResultMap">
+		select * from  room r where r.room_id = #{roomId}; 
+	 </select>
+	 
+	 <select id="findByUserId"  parameterType="map"  resultMap="BaseResultMap">
+		select * from  room r,style s where r.style = s.style_id and r.user = #{userId}; 
+	 </select>
+	 
+	 <select id="findByUserIdAndRoomState"  parameterType="map"  resultMap="BaseResultMap">
+		select * from  room r,style s where r.style = s.style_id and r.user = #{userId} and r.room_state = #{roomState}; 
+	 </select>
 
-    <select id="findByArea"  parameterType="map" resultType="com.entity.Room" resultMap="BaseResultMap">
+    <select id="findByArea"  parameterType="map" resultMap="BaseResultMap">
 	  SELECT t1.* FROM room t1,area t2 WHERE t1.area = t2.area_id AND t2.area_name = #{areaName}
 	</select>
 	
-	<select id="findByStyle"  parameterType="map" resultType="com.entity.Room" resultMap="BaseResultMap">
+	<select id="findByStyle"  parameterType="map"  resultMap="BaseResultMap">
 	  SELECT t1.* FROM room t1,style t2 WHERE t1.style = t2.style_id AND t2.style_name = #{styleName}
 	</select>
 	
-	<select id="findByAreaAndStyle"  parameterType="map" resultType="com.entity.Room" resultMap="BaseResultMap">
+	<select id="findByAreaAndStyle"  parameterType="map" resultMap="BaseResultMap">
 	  SELECT * FROM room t1,area t2,style t3 WHERE t1.area=t2.area_id AND t1.style=t3.style_id 
 	  and t2.area_name = #{areaName} and t3.style_name = #{styleName}
 	</select>
 	
-	<select id="findByAreaAndStyleAndPriceAndSpace"  parameterType="map" resultType="com.entity.Room" resultMap="BaseResultMap">
+	<select id="findByAreaAndStyleAndPriceAndSpace"  parameterType="map" resultMap="BaseResultMap">
 	     select * from room t1,area t2,style t3 WHERE t1.area=t2.area_id AND t1.style=t3.style_id 
 		 <if test="areaName!=null and areaName!=''">
 		  and t2.area_name=#{areaName}
@@ -209,4 +236,10 @@
 		  </if>		
 		
 	</select>
+	
+	  <update id="updateRoomState" parameterType="com.entity.Room">
+    update room
+    set room_state = #{roomState,jdbcType=BIT}
+    where room_id = #{roomId,jdbcType=INTEGER}
+     </update>
 </mapper>

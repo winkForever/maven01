@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
     <base href="<%=basePath%>">  
 	<meta charset="UTF-8">
-	<title>Nilachol || Responsive HTML 5 Template</title> 
+	<title>租房首页</title> 
 
 	<!-- mobile responsive meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <a href="">欢迎您,${userName}</a>
                     <a href="user/loginOut">退出登录</a>
                     </c:if>
-                    <li><i class="flaticon-envelope"></i>Yourcompany@gmail.com</li>
+                    <li><i class="flaticon-envelope"></i>租房平台</li>
                 </ul>
                 <ul class="social-style-one float_right">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="row">
                 <div class="col-md-4">
                     <div class="main-logo">
-                        <a href="index.jsp"><img src="images/logo/logo.png" alt=""></a>
+                        <a href="jsp/index.jsp"><img src="images/logo/logo.png" alt=""></a>
                     </div>
                 </div>
 
@@ -76,108 +76,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="navbar-collapse collapse clearfix">
                             <ul class="navigation clearfix">
 
-                                <li class="current dropdown"><a href="index.jsp">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Homepage One</a></li>
-                                        <li><a href="index-2.html">Homepage Two</a></li>
-                                    </ul>
+                                <li class="current dropdown"><a href="jsp/index.jsp">主页</a>
                                 </li>
 
-                                <li class="dropdown"><a href="#">About</a>
-                                    <ul>
-                                        <li><a href="about.html">About us</a></li>
-                                        <li><a href="team.html">Team</a></li>
-                                        <li><a href="rooms.html">Rooms</a></li>
-                                        <li><a href="single-room.html">Room Details</a></li>
-                                        <li><a href="testimonials.html">Testimonials</a></li>
-                                    </ul>
+
+                                <li class="dropdown"><a href="room/show.action">租房信息</a>
                                 </li>
 
-                                <li class="dropdown"><a href="#">services</a>
-                                    <ul>
-                                        <li><a href="service.html">Services</a></li>
-                                        <li><a href="service-single.html">Service Details</a></li>
-                                    </ul>  
-                                </li>
+                                <c:if test="${loginFlag == false}">
+                                <li><a href="jsp/login.jsp">个人中心</a></li>
+                                </c:if>
+                                <c:if test="${loginFlag == true}">
+                                <li><a href="user/showOwnMessage">个人中心</a></li>
+                                </c:if>
 
-                                <li class="dropdown"><a href="#">Pages</a>
-                                    <ul>
-                                        <li><a href="gallery-one.html">Gallery boxed</a></li>
-                                        <li><a href="gallery-two.html">Gallery Fullwidth</a></li>
-                                        <li><a href="error.html">404 Page</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown"><a href="#">News</a>
-                                    <ul>
-                                        <li><a href="blog-grid.html">News Grid</a></li>
-                                        <li><a href="blog-large.html">News Classic</a></li>
-                                        <li><a href="blog-details.html">News Details</a></li>
-                                    </ul>
-                                </li>
-
-                                <li><a href="jsp/ownMessage.jsp">个人中心</a></li>
-
-                            </ul>
-
-                            <ul class="mobile-menu clearfix">
-
-                                <li class="current dropdown"><a href="index.html">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Homepage One</a></li>
-                                        <li><a href="index-2.html">Homepage Two</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown"><a href="#">About</a>
-                                    <ul>
-                                        <li><a href="about.html">About us</a></li>
-                                        <li><a href="team.html">Team</a></li>
-                                        <li><a href="rooms.html">Rooms</a></li>
-                                        <li><a href="single-room.html">Room Details</a></li>
-                                        <li><a href="testimonials.html">Testimonials</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown"><a href="#">services</a>
-                                    <ul>
-                                        <li><a href="service.html">Services</a></li>
-                                        <li><a href="service-single.html">Service Details</a></li>
-                                    </ul>  
-                                </li>
-
-                                <li class="dropdown"><a href="#">Pages</a>
-                                    <ul>
-                                        <li><a href="gallery-one.html">Gallery boxed</a></li>
-                                        <li><a href="gallery-two.html">Gallery Fullwidth</a></li>
-                                        <li><a href="error.html">404 Page</a></li>
-                                    </ul>
-                                </li>
-
-                                <li class="dropdown"><a href="#">News</a>
-                                    <ul>
-                                        <li><a href="blog-grid.html">News Grid</a></li>
-                                        <li><a href="blog-large.html">News Classic</a></li>
-                                        <li><a href="blog-details.html">News Details</a></li>
-                                    </ul>
-                                </li>
-
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-
-                <div class="col-md-2" style="margin-left: -17.5mm;">
-                    <div class="right-column">
-                        <div class="right-area">
-                        <div class="link-btn4 float_left" >
-                               <a href="#appointment-popup" class="btn-style-one has-appointment-popup">appointment</a>
-                        </div>
-                        </div>
-                    </div>
-                </div>
-                
+                            </ul>      
 
             </div>
         </div>
@@ -203,8 +116,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         data-responsive_offset="on"
                         data-start="700">
                         <div class="slide-content-box">
-                            <h1>Travel Brings Power & Love <br>back to your Life</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Nunc sagittis, urna nec semper pharetra. </p>
+                             <h1>快捷又方便地租到房子 </h1>  
+                             <p>这是一个没有中间赚差价的租房平台 </p>    
                         </div>
                     </div>
                     <div class="tp-caption tp-resizeme" 
@@ -217,11 +130,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         data-splitout="none" 
                         data-responsive_offset="on"
                         data-start="2300">
-                        <div class="slide-content-box">
-                            <div class="button">
-                                <a class="btn-style-five" href="about.html">About Us</a>     
-                            </div>
-                        </div>
                     </div>
                     <div class="tp-caption tp-resizeme" 
                         data-x="left" data-hoffset="195" 
@@ -233,15 +141,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         data-splitout="none" 
                         data-responsive_offset="on"
                         data-start="2600">
-                        <div class="slide-content-box">
-                            <div class="button">
-                                <a class="btn-style-six" href="contact.html">Contact Us</a>     
-                            </div>
-                        </div>
                     </div>
                 </li>
                 <li data-transition="slotzoom-horizontal">
-                    <img src="images/slider/2.jpg"  alt="" width="1920" height="750" data-bgposition="top center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="1" >
+                    <img src="images/slider/4.jpg"  alt="" width="1920" height="750" data-bgposition="top center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="1" >
                     
                     <div class="tp-caption  tp-resizeme" 
                         data-x="left" data-hoffset="15" 
@@ -255,8 +158,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         data-responsive_offset="on"
                         data-start="700">
                         <div class="slide-content-box">
-                            <h1>Travel Brings Power & Love <br>back to your Life</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Nunc sagittis, urna nec semper pharetra. </p>
+                            <h1>快捷又方便地租到房子 </h1>  
+                             <p>这是一个没有中间赚差价的租房平台 </p>                      
                         </div>
                     </div>
                     <div class="tp-caption tp-resizeme" 
@@ -269,11 +172,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         data-splitout="none" 
                         data-responsive_offset="on"
                         data-start="2300">
-                        <div class="slide-content-box">
-                            <div class="button">
-                                <a class="btn-style-five" href="about.html">About Us</a>     
-                            </div>
-                        </div>
                     </div>
                     <div class="tp-caption tp-resizeme" 
                         data-x="left" data-hoffset="195" 
@@ -285,15 +183,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         data-splitout="none" 
                         data-responsive_offset="on"
                         data-start="2600">
-                        <div class="slide-content-box">
-                            <div class="button">
-                                <a class="btn-style-six" href="contact.html">contact us</a>     
-                            </div>
-                        </div>
                     </div>
                 </li>
                 <li data-transition="slotzoom-horizontal">
-                    <img src="images/slider/1.jpg"  alt="" width="1920" height="750" data-bgposition="top center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="1" >
+                    <img src="images/slider/5.jpg"  alt="" width="1920" height="750" data-bgposition="top center" data-bgfit="cover" data-bgrepeat="no-repeat" data-bgparallax="1" >
                     
                     <div class="tp-caption  tp-resizeme" 
                         data-x="left" data-hoffset="15" 
@@ -307,8 +200,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         data-responsive_offset="on"
                         data-start="700">
                         <div class="slide-content-box">
-                            <h1>Travel Brings Power & Love <br>back to your Life</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br>Nunc sagittis, urna nec semper pharetra. </p>
+                            <h1>快捷又方便地租到房子</h1>
+                            <p>这是一个没有中间赚差价的租房平台 </p>
                         </div>
                     </div>
                     <div class="tp-caption tp-resizeme" 
@@ -321,11 +214,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         data-splitout="none" 
                         data-responsive_offset="on"
                         data-start="2300">
-                        <div class="slide-content-box">
-                            <div class="button">
-                                <a class="btn-style-five" href="about.html">About Us</a>     
-                            </div>
-                        </div>
                     </div>
                     <div class="tp-caption tp-resizeme" 
                         data-x="left" data-hoffset="195" 
@@ -337,11 +225,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         data-splitout="none" 
                         data-responsive_offset="on"
                         data-start="2600">
-                        <div class="slide-content-box">
-                            <div class="button">
-                                <a class="btn-style-six" href="contact.html">contact us</a>     
-                            </div>
-                        </div>
                     </div>
                 </li>
             </ul>

@@ -19,11 +19,11 @@ public class Room implements Serializable {
 
     private Integer user;
 
-    private Integer area;
-
-    private Style style;
+    private Integer area;    
     
-    private Style style2;
+    private Integer style;
+
+    private Style style2;   
 
     private Boolean roomState;
 
@@ -83,7 +83,7 @@ public class Room implements Serializable {
         return user;
     }
 
-    public void setUser(Integer user) {
+	public void setUser(Integer user) {
         this.user = user;
     }
 
@@ -93,14 +93,22 @@ public class Room implements Serializable {
 
     public void setArea(Integer area) {
         this.area = area;
-    }
+    }           
 
-    public Style getStyle() {
+	public Integer getStyle() {
         return style;
     }
 
-    public void setStyle(Style style) {
-        this.style = style;
+	public void setStyle(Integer style) {
+		this.style = style;
+	}
+
+	public Style getStyle2() {
+        return style2;
+    }
+
+    public void setStyle2(Style style2) {
+        this.style2 = style2;
     }
 
     public Boolean getRoomState() {
@@ -118,13 +126,5 @@ public class Room implements Serializable {
     public void setRoomFlag(Boolean roomFlag) {
         this.roomFlag = roomFlag;
     }
-
-	public Style getStyle2() {
-		return style2;
-	}
-
-	public void setStyle2(Style style2) {
-		this.style2 = style2;
-	}   
     
 }

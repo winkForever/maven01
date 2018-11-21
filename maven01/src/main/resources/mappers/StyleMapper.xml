@@ -69,5 +69,16 @@
   <select id="findAll"  parameterType="map"   resultMap="BaseResultMap">
 		select * from style s
 	</select>
+	
+	 <select id="findByRoomId"  parameterType="map"   resultMap="BaseResultMap">
+		select * from style s,room r where r.style = s.style_id and r.room_id = #{roomId}
+	</select>
+	
+	 <select id="findByStyleName"  parameterType="map"   resultMap="BaseResultMap">
+		select * from style s where s.style_name = #{styleName}
+	</select>
   
+    <select id="findByStyleId"  parameterType="map"   resultMap="BaseResultMap">
+		select * from style s where s.style_id = #{styleId}
+	</select>
 </mapper>

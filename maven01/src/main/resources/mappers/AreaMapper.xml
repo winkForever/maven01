@@ -70,4 +70,16 @@
      <select id="findAll"  parameterType="map"   resultMap="BaseResultMap">
 		select * from area a 
 	</select>
+	
+	  <select id="findByRoomId"  parameterType="map"   resultMap="BaseResultMap">
+		select * from area a,room r where r.area = a.area_id and r.room_id = #{roomId}
+	</select>
+	
+	 <select id="findByAreaName"  parameterType="map"   resultMap="BaseResultMap">
+		select * from area a where a.area_name = #{areaName}
+	</select>
+	
+	 <select id="findByAreaId"  parameterType="map"   resultMap="BaseResultMap">
+		select * from area a where a.area_id = #{areaId}
+	</select>
 </mapper>
